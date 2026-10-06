@@ -1,0 +1,8 @@
+{
+  "name": "lagos-run",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "latest"
+  }
+}
