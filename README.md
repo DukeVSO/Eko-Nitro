@@ -1,4 +1,4 @@
-# EKO NITRO - Netlify setup
+# Eko Nitro - Netlify setup
 
 1. Create a new GitHub repository and upload everything in this folder (keep the folder structure).
 2. In Netlify: Add new site > Import an existing project > pick the repo. Build settings are read from netlify.toml (publish: public, functions: netlify/functions).

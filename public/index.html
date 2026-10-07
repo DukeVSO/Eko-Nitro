@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>LAGOS RUN · Third Mainland Rush</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no"><title>EKO NITRO · Lagos Street Racing</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--y:#f4b400;--g:#0c7a43;--r:#e63b2e;--p:#f3ecd8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -50,14 +50,25 @@ h2{font:400 clamp(26px,5vw,42px) 'Archivo Black';color:var(--y);margin:6px 0}
 #ctl #bk,#ctl #nt{width:96px;height:80px;border-radius:16px;font-size:17px;padding:0}#ctl button:active{transform:scale(.93);filter:brightness(.8)}#sp{bottom:128px}#bars{bottom:128px}
 html,body{width:100%;height:100dvh}
 @media (max-width:760px){.scr{padding:12px 14px 22px}h1{font-size:40px;text-shadow:3px 3px 0 #000}h2{font-size:24px;margin:2px 0}.tag{font-size:15px;margin:6px 0 8px;padding:4px 8px;border-top-width:4px;border-bottom-width:4px}.scr p{font-size:15px;margin-bottom:5px}.go{font-size:16px;padding:9px 16px;margin-top:7px;box-shadow:3px 3px 0 #000;border-radius:5px}.go2{font-size:14px;padding:7px 12px}.card{padding:7px 9px;font-size:15px;gap:8px}.card small{font-size:13px}.lst{gap:6px;margin:6px 0}.pf{font-size:16px;gap:7px}.pf span{padding:1px 8px}.sm{font-size:15px;padding:6px 9px}.br{font-size:13px;grid-template-columns:78px 1fr}.sw{width:26px;height:26px}input{font-size:17px;padding:6px 8px}}
+:root{--u:clamp(54px,15vmin,68px)}::selection{background:transparent}
+#ctl{left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}
+#ctl #sl,#ctl #sr{width:var(--u);height:var(--u);font-size:calc(var(--u)*.42);opacity:.8}#ctl #bk,#ctl #nt{width:calc(var(--u)*1.2);height:var(--u);border-radius:calc(var(--u)*.3);font-size:calc(var(--u)*.26);opacity:.85}
+#ctl button:active{transform:none;filter:none}#ctl button.dn{background:var(--y)!important;box-shadow:inset 0 0 0 3px #fff;opacity:1}
+#sp,#bars{bottom:calc(var(--u) + 40px)}
+#sl2{position:fixed;inset:-12%;pointer-events:none;opacity:0;background:repeating-conic-gradient(rgba(255,255,255,0) 0 3deg,rgba(255,255,255,.4) 3deg 3.4deg,rgba(255,255,255,0) 3.4deg 7.3deg);-webkit-mask-image:radial-gradient(circle,transparent 42%,#000 88%);mask-image:radial-gradient(circle,transparent 42%,#000 88%)}body:not(.pl) #sl2{display:none}
+#pop{left:50%;top:40%;transform:translateX(-50%);text-align:center;font:400 clamp(18px,4.5vw,30px) 'Archivo Black',Impact,sans-serif;color:#fff;opacity:0;white-space:nowrap}#pop small{display:block;font:700 17px 'Barlow Condensed',sans-serif;color:var(--y)}
+#pop.on{animation:pp .95s ease-out}@keyframes pp{0%{opacity:0;transform:translateX(-50%) scale(1.5)}15%{opacity:1;transform:translateX(-50%) scale(1)}80%{opacity:1}100%{opacity:0}}
+#cmb{left:50%;transform:translateX(-50%);bottom:calc(var(--u)*2 + 54px);font:400 19px 'Archivo Black',Impact,sans-serif;color:var(--y);white-space:nowrap}
+#rg{display:grid!important;grid-template-columns:auto auto;grid-template-rows:auto auto;gap:10px;align-items:end}#rg #nt{grid-row:1/3;grid-column:2;height:calc(var(--u)*2 + 10px);width:calc(var(--u)*1.1)}#rg #dr{grid-column:1;grid-row:1}#rg #bk{grid-column:1;grid-row:2}#rg #dr,#rg #bk{width:calc(var(--u)*1.1);height:var(--u);border-radius:calc(var(--u)*.3);font-size:calc(var(--u)*.24);padding:0}#ctl #dr{touch-action:none;opacity:.85;background:#f3ecd8dd;border:0;font-family:'Archivo Black',Impact,sans-serif}
+#bars{bottom:calc(var(--u)*2 + 40px)}
 </style></head><body>
-<div id="sunx"></div><canvas id="c"></canvas>
+<div id="sunx"></div><canvas id="c"></canvas><div id="sl2"></div>
 <div id="sp" class="h"><b id="sv">0</b> <small>km/h</small></div>
 <div id="top" class="h"><div id="nx"></div><div id="rt"></div></div>
-<div id="cs" class="h">₦0</div><div id="pos" class="h"></div>
+<div id="cs" class="h">₦0</div><div id="pop" class="h"></div><div id="cmb" class="h"></div><div id="pos" class="h"></div>
 <div id="bars" class="h">NITRO<div class="bar"><u id="nb"></u></div>BODY<div class="bar"><u id="hb"></u></div></div>
 <div id="ht" class="h">POLICE DEY YOUR BACK!</div><div id="ts" class="h"></div><div id="fl"></div>
-<div id="nw"><div id="nwt"></div></div><div id="rad"><button id="rb" onclick="A('rad')"></button><button id="rm" onclick="A('mute')">🔊</button><button onclick="A('news')">NEWS</button></div><div id="ctl"><div class="grp"><button id="sl">◀</button><button id="sr">▶</button></div><div class="grp"><button id="bk">BRAKE</button><button id="nt">NITRO</button></div></div>
+<div id="nw"><div id="nwt"></div></div><div id="rad"><button id="rb" onclick="A('rad')"></button><button id="rm" onclick="A('mute')">🔊</button><button onclick="A('news')">NEWS</button></div><div id="ctl"><div class="grp"><button id="sl">◀</button><button id="sr">▶</button></div><div class="grp" id="rg"><button id="dr">DRIFT</button><button id="bk">BRAKE</button><button id="nt">NITRO</button></div></div>
 <button id="qt" onclick="A('pause')">❚❚ PAUSE</button><div class="scr on" id="ui"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -150,11 +161,11 @@ function reset(){dist=D0;ps=0;if(window.ext0)ext0();px=1.7;vx=0;hp=100;nit=25;ca
 function fin(t,sub){st='over';$('et').textContent=t;$('es').textContent=sub;$('end').classList.add('on');if(osc)osc.frequency.value=0}
 function crash(v){if(v.cd>0)return;const dx=Math.abs(v.x-px);if(Math.abs(v.z)<v.l/2+2.1&&dx<v.w/2+.95){v.cd=1;v.hit=1;if(v.t=='okada'){hitOk(v);return}if(v.t=='danfo')v.ang=7;hp-=v.t=='brt'||v.t=='truck'?30:v.t=='okada'?10:18;ps*=.45;shake=1;px-=Math.sign(v.x-px||1)*.8;$('fl').style.opacity=1;toast(pk(["Eeyah! Wetin you do?","Danfo don hammer you!","Na so we see am!","Wahala dey!"]));if(hp<=0)fin('WRECKED',`Your ride don scatter at ${Math.round(dist)} m · ₦${cash}`)}}
 function upd(dt,play){
- const sn=play&&nitOn||K.Space||K.ShiftLeft,use=play&&sn&&nit>0;
+ const sn=play&&nitOn||K.Space,use=play&&sn&&nit>0;
  if(play){const sv=(K.ArrowRight||K.KeyD?1:0)-(K.ArrowLeft||K.KeyA?1:0)+Object.values(tp).reduce((a,b)=>a+b,0),sg=cl(sv,-1,1),bk=brk||K.ArrowDown||K.KeyS,cap=use?CAP+26:CAP;
   if(bk)ps=Math.max(0,ps-45*dt);else if(ps<cap)ps+=(use?34*AC:15*AC*(1-ps/(CAP+16)))*dt;else ps-=12*dt;
   if(use)nit-=28/NM*dt;nit=Math.max(0,nit);
-  vx+=(sg*(7+ps*.1)*HM-vx)*cl(dt*7,0,1);px+=vx*dt*Math.min(1,ps/4);if(px>RMAX||px<LMIN){px=cl(px,LMIN,RMAX);vx=0;ps=Math.max(0,ps-9*dt);shake=Math.max(shake,.25)}
+  drf=(drh||K.ShiftLeft||K.KeyX)&&ps>26&&Math.abs(vx)>2;vx+=(sg*(7+ps*.1)*HM*(drf?1.35:1)-vx)*cl(dt*(drf?2.4:7),0,1);px+=vx*dt*Math.min(1,ps/4);if(px>RMAX||px<LMIN){px=cl(px,LMIN,RMAX);vx=0;ps=Math.max(0,ps-9*dt);shake=Math.max(shake,.25)}
   time+=dt;dist+=ps*dt;}
  else{ps=st=='garage'?0:24;px=st=='garage'?1.7:1.7+Math.sin(performance.now()/1500)*2}
  const dz=ps*dt;tiles.forEach(t=>{t.z+=dz;if(t.z>75){t.z-=NT*TL;tz(t,dist-t.z)}t.g.position.z=t.z});
@@ -162,7 +173,7 @@ function upd(dt,play){
  trf.forEach(v=>{v.pz=v.z;v.z+=(ps-v.v)*dt;v.cd-=dt;if(v.t=='danfo'||v.t=='okada'||v.t=='keke'){v.tm-=dt;if(v.tm<0){v.tm=v.t=='okada'?rr(.8,2):rr(2,5);v.ln=cl(v.ln+(R()<.5?-1:1),0,3)}}
   const tx=LX[v.ln],mv=cl(tx-v.x,-dt*(v.t=='okada'?3.5:2.4),dt*(v.t=='okada'?3.5:2.4));v.x+=mv;v.g.rotation.y=-mv*4;v.g.position.set(v.x,0,v.z);
   if(v.z>25||v.z<-390)place(v,1);
-  if(play){crash(v);if(v.pz<0&&v.z>=0&&v.cd<=0&&Math.abs(v.x-px)<v.w/2+2.6&&ps>v.v){const g=Math.round(150+ps*3);cash+=g;tlim+=1.5;if(R()<.5)sfx('horn');toast(pk(["Small small! +₦"+g,"Correct dodge! +₦"+g,"Fear no dey! +₦"+g]),.9)}}});
+  if(play){crash(v);if(v.pz<0&&v.z>=0&&v.cd<=0&&Math.abs(v.x-px)<v.w/2+2.6&&ps>v.v){const g=Math.round(150+ps*3);nearMiss(v,g)}}});
  opp.forEach(v=>{v.z+=(ps+v.v)*dt;if(v.z>30){v.z=-(260+R()*100);v.x=-14.8+pk(LX)}v.g.position.set(v.x,0,v.z)});
  if(play){if(dist>D0+PC0&&!po.g.visible){po.g.visible=true;po.z=70;po.x=px;toast("Police dey your back o!",2)}
   if(po.g.visible){po.pz=po.z;po.z+=(ps-po.v)*dt;po.x+=(px-po.x)*cl(dt*2.2,0,1);po.cd-=dt;if(po.z>260)po.z=110;po.g.position.set(po.x,0,po.z);crash(po);
@@ -177,7 +188,7 @@ function upd(dt,play){
  ext(dt,play);pl.position.set(px,0,0);pl.rotation.z=-vx*.018;pl.rotation.y=-vx*.014;fl1.visible=fl2.visible=!!use;
  shake=Math.max(0,shake-dt*2.5);toastT-=dt;if(toastT<0)$('ts').style.opacity=0;const f=$('fl');if(f.style.opacity>0)f.style.opacity=Math.max(0,f.style.opacity-dt*2.5);
  cam.fov=68+ps/82*12+(use?3:0);cam.updateProjectionMatrix();cam.position.set(px*.7+(R()-.5)*shake*.5,3.3+(R()-.5)*shake*.4,8.8);cam.lookAt(px*.5,1.3,-14);if(st=='garage'){const a=performance.now()/2600;cam.fov=50;cam.updateProjectionMatrix();cam.position.set(px+Math.sin(a)*7,2.2,Math.cos(a)*7);cam.lookAt(px,.9,0)}}
-function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000||.016);last=n;if(st!='pause')upd(dt,st=='play');rd.render(sc,cam)}
+function loop(n){requestAnimationFrame(loop);const dt=Math.min(.05,(n-last)/1000||.016);last=n;if(st!='pause')upd(dt*slow,st=='play');rd.render(sc,cam)}
 function start(){au();if(ac&&ac.state=='suspended')ac.resume();reset();$('menu').classList.remove('on');$('end').classList.remove('on');st='play';ps=8;toast("GO GO GO!",1.2)}
 reset();requestAnimationFrame(loop);
 </script><script>
@@ -191,7 +202,7 @@ const U=$('ui'),fm=n=>'₦'+n.toLocaleString(),lvl=()=>1+Math.floor(S.xp/1200),u
 let gi=0,gm='';
 function show(h,c=''){U.className='scr on '+c;U.innerHTML=h}
 function applyCar(id){const c=CARS[id];PC.color.setHex(S.paint[id]??c.col);pl.scale.set(...c.s)}
-function home(){st='menu';applyCar(S.car);show(`<div class=pf><b>${S.name}</b><span>LV ${lvl()}</span><span>${fm(S.cash)}</span><button onclick="A('prof')">Profile</button></div><h1>LAGOS<br>RUN</h1><div class=tag>Third Mainland Rush · Career Mode</div><div class=xp><u style="width:${(S.xp%1200)/12}%"></u></div><p>${Object.keys(S.done).length}/${EVS.length} events cleared · ${S.own.length}/${Object.keys(CARS).length} cars · ${S.xp} XP</p><button class=go onclick="A('career')">CAREER</button><button class=go onclick="A('garage')">GARAGE</button><button class=go onclick="A('prof')">PROFILE</button><button class=go onclick="A('lb')">LEADERBOARD</button><button class=go style="opacity:.75" onclick="A('soon')">ONLINE RACE & CHAT · COMING SOON</button><button class=go onclick="A('so')">EXIT</button>`)}
+function home(){st='menu';applyCar(S.car);show(`<div class=pf><b>${S.name}</b><span>LV ${lvl()}</span><span>${fm(S.cash)}</span><button onclick="A('prof')">Profile</button></div><h1>EKO<br>NITRO</h1><div class=tag>Lagos Street Racing · Career Mode</div><div class=xp><u style="width:${(S.xp%1200)/12}%"></u></div><p>${Object.keys(S.done).length}/${EVS.length} events cleared · ${S.own.length}/${Object.keys(CARS).length} cars · ${S.xp} XP</p><button class=go onclick="A('career')">CAREER</button><button class=go onclick="A('garage')">GARAGE</button><button class=go onclick="A('prof')">PROFILE</button><button class=go onclick="A('lb')">LEADERBOARD</button><button class=go style="opacity:.75" onclick="A('soon')">ONLINE RACE & CHAT · COMING SOON</button><button class=go onclick="A('so')">EXIT</button>`)}
 function career(){st='menu';applyCar(S.car);const cs=EVS.map((e,i)=>{const ok=i==0||S.done[EVS[i-1].id],d=S.done[e.id];return`<div class="card${ok?'':' lk'}"><div><b>${e.n}</b><br><small>${MODE[e.mode||'sprint']} · ${e.d} · ${((e.b-e.a)/1000).toFixed(1)} km · ${fm(e.r)}</small><br>${d?'★'.repeat(d.s)+'☆'.repeat(3-d.s):ok?'☆☆☆':'Locked · clear the last event'}</div>${ok?`<button class=go2 onclick="A('race',${i})">RACE</button>`:''}</div>`}).join('');show(`<div class=pf><b>${S.name}</b><span>LV ${lvl()}</span><span>${fm(S.cash)}</span></div><h2>CAREER</h2><div class=lst>${cs}</div><button class=go onclick="A('home')">BACK</button>`)}
 function garage(){const ids=Object.keys(CARS),id=ids[gi],c=CARS[id],own=S.own.includes(id),u=ug(id),s=stt(id),b=(l,v,m)=>`<div class=br>${l}<div class=bar2><u style="width:${Math.min(100,v/m*100)}%"></u></div></div>`,up=(k,l)=>`<button class=sm onclick="A('up','${k}')">${l} ${u[k]}/3 · ${u[k]<3?fm(1500*(u[k]+1)):'MAX'}</button>`;applyCar(id);
 show(`<div class=pf><b>GARAGE</b><span>${fm(S.cash)}</span></div><h2>${c.n}</h2><div class=bars2>${b('SPEED',s.spd,80)}${b('ACCEL',s.ac,1.5)}${b('HANDLING',s.hn,1.4)}${b('NITRO',s.nt,1.8)}</div><div class=row><button class=sm onclick="A('gn',-1)">◀</button>${own?(S.car==id?'<button class=go2>SELECTED</button>':`<button class=go2 onclick="A('sel')">SELECT</button>`):`<button class=go2 onclick="A('buy')">BUY ${fm(c.p)}</button>`}<button class=sm onclick="A('gn',1)">▶</button></div>${own?`<div class=row>${up('e','Engine')}${up('t','Tyres')}${up('n','Nitro')}</div><div class=row>${PAL.map(h=>`<i class=sw style="background:#${h.toString(16).padStart(6,'0')}" onclick="A('pt',${h})"></i>`).join('')}</div>`:''}<p>${gm}</p><button class=go onclick="A('home')">BACK</button>`,'gar');gm=''}
@@ -206,9 +217,9 @@ window.A=(a,x)=>{const ids=Object.keys(CARS),id=ids[gi];
  else if(a=='ren'){try{const n=prompt('Your racer name',S.name);if(n){S.name=n.slice(0,16);sv()}}catch(e){}home()}
  else if(a=='quit'){if(st=='play'){st='menu';document.body.classList.remove('pl');if(osc)osc.frequency.value=0;career()}}
  else if(a=='race'){EV=EVS[x];D0=EV.a;FIN=EV.b;TS=EV.ts;PC0=EV.pc;const s=stt(S.car);CAP=s.spd;AC=s.ac;HM=s.hn;NM=s.nt;applyCar(S.car);reset();U.classList.remove('on');document.body.classList.add('pl');au();if(ac&&ac.state=='suspended')ac.resume();st='play';ps=8;toast(EV.n+' · '+MODE[EV.mode||'sprint']+' · GO!',1.6)}};
-function fin(t,sub){if(st!='play')return;st='over';document.body.classList.remove('pl');if(osc)osc.frequency.value=0;
+function fin(t,sub){if(st!='play')return;if(t=='FINISH!'&&EV&&EV.mode=='duel'&&rv.some(r=>r.rd>=FIN&&r.rd>-1e5)){t='DUEL LOST';sub='The boss beat you to the line.'}st='over';document.body.classList.remove('pl');if(osc)osc.frequency.value=0;
  const win=t=='FINISH!',l0=lvl();let stars=0,rw=0,xp=60,pos=0;
- if(win){const par=(FIN-D0)/46;stars=1+(time<par)+(time<par*.88);rw=Math.round(EV.r*(.5+stars*.25));pos=1+rv.filter(r=>r.rd>=FIN).length;rw=Math.round(rw*(EV.mode&&EV.mode!='sprint'?1.25:[1.5,1.25,1.1,1][pos-1]));xp=250+stars*150;const o=S.done[EV.id];S.done[EV.id]={s:Math.max(stars,o?o.s:0),t:Math.min(time,o?o.t:9e9)}}
+ if(win){const par=(FIN-D0)/46;stars=1+(time<par)+(time<par*.88);rw=Math.round(EV.r*(.5+stars*.25));pos=1+rv.filter(r=>r.rd>=FIN).length;rw=Math.round(rw*(['time','escape','cash'].includes(EV.mode)?1.25:[1.5,1.25,1.1,1][pos-1]));xp=250+stars*150;const o=S.done[EV.id];S.done[EV.id]={s:Math.max(stars,o?o.s:0),t:Math.min(time,o?o.t:9e9)}}
  S.cash+=cash+rw;S.xp+=xp;sv();pub();const i=EVS.indexOf(EV),nx=win&&EVS[i+1];
  show(`<h1>${win?'FINISHED!':t}</h1><div class=tag>${win?'P'+pos+' · '+'★'.repeat(stars)+'☆'.repeat(3-stars)+' · '+sub:sub}</div><p>Earned ${fm(cash)} on the road${win?' + '+fm(rw)+' prize':''} · +${xp} XP${lvl()>l0?' · LEVEL UP!':''}</p><button class=go onclick="A('race',${i})">RETRY</button>${nx?`<button class=go onclick="A('race',${i+1})">NEXT EVENT</button>`:''}<button class=go onclick="A('career')">CAREER</button>`)}
 
@@ -281,7 +292,7 @@ function pickups(dt){cT-=ps*dt;if(cT<=0){cT=EV&&EV.mode=='cash'?rr(35,60):rr(70,
 /* ---- rival tags + standings ---- */
 rv.forEach((r,i)=>{const cv=document.createElement('canvas');cv.width=256;cv.height=64;const t=new T.CanvasTexture(cv),sp=new T.Sprite(new T.SpriteMaterial({map:t,depthTest:false,transparent:true,sizeAttenuation:false}));sp.scale.set(.26,.065,1);sp.position.set(0,2.9,0);sp.renderOrder=9;r.g.add(sp);r.tc=cv;r.tt=t;r.col=['#e63b2e','#1b9aff','#f4b400'][i]});
 function tag(r){const g=r.tc.getContext('2d');g.clearRect(0,0,256,64);g.fillStyle='rgba(0,0,0,.7)';g.fillRect(0,6,256,36);g.fillStyle=r.col;g.fillRect(0,6,9,36);g.font='24px Impact,sans-serif';g.fillStyle='#fff';g.textAlign='center';g.fillText(r.nm,132,34);g.fillStyle=r.col;g.beginPath();g.moveTo(112,44);g.lineTo(144,44);g.lineTo(128,62);g.fill();r.tt.needsUpdate=true}
-function stand(pos){const a=rv.map(r=>({n:r.nm,d:r.rd,c:r.col})).concat([{n:'YOU',d:dist,c:'#fff'}]).sort((x,y)=>y.d-x.d),h=`<b style="font-size:24px">P${pos}/${a.length}</b>`+a.map((x,i)=>`<div style="color:${x.c}">${i+1}. ${x.n}${x.n=='YOU'?'':' '+(x.d>dist?'+':'-')+(Math.round(Math.abs(x.d-dist)/5)*5)+'m'}</div>`).join('');if(h!==stand.h){$('pos').innerHTML=h;stand.h=h}}
+function stand(pos){const a=rv.filter(r=>r.rd>-1e5).map(r=>({n:r.nm,d:r.rd,c:r.col})).concat([{n:'YOU',d:dist,c:'#fff'}]).sort((x,y)=>y.d-x.d),h=`<b style="font-size:24px">P${pos}/${a.length}</b>`+a.map((x,i)=>`<div style="color:${x.c}">${i+1}. ${x.n}${x.n=='YOU'?'':' '+(x.d>dist?'+':'-')+(Math.round(Math.abs(x.d-dist)/5)*5)+'m'}</div>`).join('');if(h!==stand.h){$('pos').innerHTML=h;stand.h=h}}
 /* ---- roadside life ---- */
 const th=d=>d>=6000&&d<9500?'lekki':d>=11000&&d<12500?'apapa':d>=12500?'green':'base';
 const ADS=["FRESH CATFISH|PEPPER SOUP","REPAIR PHONE|HERE NOW","GOD'S GRACE|CATERING","BEST SUYA|IN LAGOS","FOR SALE|CALL 0803..."],ADM=ADS.map((t,i)=>new T.MeshBasicMaterial({map:ct(256,128,g=>{g.fillStyle=['#0c7a43','#e63b2e','#f4b400','#1b4fa0','#6a2c8a'][i];g.fillRect(0,0,256,128);g.fillStyle=i==2?'#111':'#fff';g.font='28px Impact,sans-serif';g.textAlign='center';const p=t.split('|');g.fillText(p[0],128,56);g.fillText(p[1],128,96)})})),ADG=new T.PlaneGeometry(5,2.5);
@@ -383,16 +394,16 @@ window.ext0=function(){e2();jn.z=-(500+R()*300);jn.t=0;wasIn=0;LMIN=-5.85;dn=0;d
 window.ext=function(dt,play){x2(dt,play);jn.z+=ps*dt;if(jn.z>80){jn.z=-(900+R()*700);jn.t=0}jn.on=RMAX>5&&!bridge(dist-jn.z)&&!bridge(dist-jn.z-40)&&!bridge(dist-jn.z+40);jv.position.z=jn.z;jv.visible=jn.on;
  const inJ=jn.on&&Math.abs(jn.z)<32;
  if(play){if(jn.on&&!jn.t&&jn.z>-190&&jn.z<-150){jn.t=1;toast('OPEN JUNCTION! Steer left across the median',2.4)}
-  if(wasIn&&!inJ&&px<-6.2){hp-=20;ps*=.4;shake=1;px=-5.6;vx=0;toast('Boom! You hit the median!',1.4);if(hp<=0)fin('WRECKED','You rammed the median.')}
+  if(0&&wasIn&&!inJ&&px<-6.2){hp-=20;ps*=.4;shake=1;px=-5.6;vx=0;toast('Boom! You hit the median!',1.4);if(hp<=0)fin('WRECKED','You rammed the median.')}
   opp.forEach(o=>{o.cd-=dt;crash(o)})}
- wasIn=inJ;LMIN=inJ?-19.6:-RMAX};
+ wasIn=inJ;LMIN=RMAX>5?-19.6:-RMAX};
 /* ---- profiles / sign-in ---- */
 const PK='lagosrun-profiles';let PF=[];try{PF=JSON.parse(localStorage.getItem(PK))||[]}catch(e){}
 const hsh=x=>{let h=5381;for(const c of x)h=(h*33^c.charCodeAt(0))>>>0;return String(h)},DEF=()=>({name:'Lagos Racer',cash:3000,xp:0,car:'golf',own:['golf'],up:{},paint:{},done:{}}),spf=()=>{try{localStorage.setItem(PK,JSON.stringify(PF))}catch(e){}};
 window.syncIdx=()=>{const p=PF.find(x=>'lagosrun-p-'+x.id==SK);if(p&&p.name!=S.name){p.name=S.name;spf()}};
 const rdp=id=>{try{return JSON.parse(localStorage.getItem('lagosrun-p-'+id))||{}}catch(e){return{}}};
 function enter(id){SK='lagosrun-p-'+id;S=Object.assign(DEF(),rdp(id));sv();pub();applyCar(S.car);home()}
-function signin(){st='menu';if(!PF.length)return newp();show(`<h1>LAGOS<br>RUN</h1><div class=tag>Sign in · choose your racer</div><div class=lst>${PF.map(p=>{const d=rdp(p.id);return`<div class=card><div><b>${esc(p.name)}</b>${p.pin?' 🔒':''}<br><small>LV ${1+Math.floor((d.xp||0)/1200)} · ${fm(d.cash==null?3000:d.cash)}</small></div><button class=go2 onclick="A('si','${p.id}')">PLAY</button></div>`}).join('')}</div><button class=go onclick="A('np')">+ NEW PROFILE</button>`)}
+function signin(){st='menu';if(!PF.length)return newp();show(`<h1>EKO<br>NITRO</h1><div class=tag>Sign in · choose your racer</div><div class=lst>${PF.map(p=>{const d=rdp(p.id);return`<div class=card><div><b>${esc(p.name)}</b>${p.pin?' 🔒':''}<br><small>LV ${1+Math.floor((d.xp||0)/1200)} · ${fm(d.cash==null?3000:d.cash)}</small></div><button class=go2 onclick="A('si','${p.id}')">PLAY</button></div>`}).join('')}</div><button class=go onclick="A('np')">+ NEW PROFILE</button>`)}
 function newp(){show(`<h2>NEW PROFILE</h2><div class=tag>Pick a racer name. Add a 4-digit PIN to lock it (optional, this device only).</div><div class=pf><input id=nn maxlength=16 placeholder="Racer name"></div><div class=pf><input id=np inputmode=numeric maxlength=4 placeholder="PIN (optional)"></div><p id=pe></p><button class=go onclick="A('mk')">CREATE</button>${PF.length?`<button class=go onclick="A('so')">BACK</button>`:''}`)}
 function mkp(){const n=$('nn').value.replace(/[<>&"]/g,'').trim().slice(0,16),pn=$('np').value.replace(/\D/g,'').slice(0,4);if(!n){$('pe').textContent='Enter a name';return}if(pn&&pn.length<4){$('pe').textContent='PIN must be 4 digits';return}const id=Date.now().toString(36);PF.push({id,name:n,pin:pn?hsh(pn):''});spf();SK='lagosrun-p-'+id;S=Object.assign(DEF(),{name:n});sv();enter(id)}
 function pinask(id){const p=PF.find(x=>x.id==id);show(`<h2>${esc(p.name)}</h2><div class=tag>Enter your PIN</div><div class=pf><input id=pn type=password inputmode=numeric maxlength=4></div><p id=pe></p><button class=go onclick="A('pg','${id}')">ENTER</button><button class=go onclick="A('so')">BACK</button>`)}
@@ -427,7 +438,7 @@ function radStep(s,i,t){const bar=Math.floor(i/16)%4,p=i%16,off=s.pr[bar];
 function radStart(){if(rtmr)return;rtmr=setInterval(()=>{if(!ac||ac.state!='running'||S.mute||ri<0)return;const s=STN[ri];if(rn<ac.currentTime)rn=ac.currentTime+.05;while(rn<ac.currentTime+.3){radStep(s,rstep,rn);rn+=60/s.bpm/4*(rstep%2?.8:1.2);rstep++}},100)}
 function rl(){$('rb').textContent='📻 '+(ri<0?'Radio off':STN[ri].n);$('rm').textContent=S.mute?'🔇':'🔊'}
 addEventListener('pointerdown',()=>au());
-const r1=rd.render;rd.render=(a,b)=>{if(eg){eg.gain.value=st=='play'?.012+ps/60*.02:0;sg.gain.value=st=='play'&&hot?.012:0;if(hot)sir.frequency.value=650+Math.sin(performance.now()/200)*250;const nu=(nitOn||K.Space||K.ShiftLeft)&&nit>0&&st=='play';if(nu&&!pnu)sfx('nit');pnu=nu}r1(a,b)};
+const r1=rd.render;rd.render=(a,b)=>{if(eg){eg.gain.value=st=='play'?.012+ps/60*.02:0;sg.gain.value=st=='play'&&hot?.012:0;if(hot)sir.frequency.value=650+Math.sin(performance.now()/200)*250;const nu=(nitOn||K.Space)&&nit>0&&st=='play';if(nu&&!pnu)sfx('nit');pnu=nu}r1(a,b)};
 /* ---- news ticker ---- */
 const HEAD=["NEPA take light again: Lagosians respond with generators","Third Mainland go-slow: motorists advised to pack snacks","Danfo fare don increase again, conductor says 'change no dey'","Lekki traffic: man waits 3 hours, discovers he was already home","Police remind motorists: respect checkpoints, carry your papers","Rain expected in Ikorodu: umbrella price jumps to ₦3,000","Okada riders reminded: helmet na life","Eko Atlantic skyline now visible from Obalende, residents confirm","Agege bread union demands more butter","Lagos Grand Prix: Tunde 'Danfo' Bello tipped as favourite","Pepper soup joint wins 'best generator noise' award"];
 $('nwt').textContent='LAGOS RADIO NEWS (for fun only):   '+HEAD.join('   •   ')+'   •   ';
@@ -472,13 +483,13 @@ const hzd=[0,1,2].map(()=>{const g=new T.Group(),p=new T.Mesh(new T.CircleGeomet
 const pc1=place;window.place=function(v,far){pc1(v,far);for(let k=0;k<6&&trf.some(o=>o!=v&&Math.abs(o.x-v.x)<1&&Math.abs(o.z-v.z)<28);k++)v.z-=30};
 const e3=ext0,x3=ext;
 window.ext0=function(){const nw=EV&&EV.road=='narrow';RMAX=nw?2.6:5.85;LX[0]=nw?-1.7:-5.1;LX[1]=nw?1.7:-1.7;LX[2]=nw?-1.7:1.7;LX[3]=nw?1.7:5.1;tiles.forEach(t=>{t.nl.visible=t.nr.visible=nw});
- e3();tlim=(FIN-D0)/44*1.15;hT=100;md.h='';hzd.forEach(h=>{h.on=0;h.g.visible=false});po.v=EV&&EV.mode=='escape'?58:54;if(EV&&EV.mode&&EV.mode!='sprint')rv.forEach(r=>r.rd=-1e6)};
+ e3();tlim=(FIN-D0)/44*1.15;hT=100;md.h='';hzd.forEach(h=>{h.on=0;h.g.visible=false});po.v=EV&&EV.mode=='escape'?58:54;if(EV&&['time','escape','cash'].includes(EV.mode))rv.forEach(r=>r.rd=-1e6)};
 window.ext=function(dt,play){x3(dt,play);hT-=ps*dt;
  if(play&&EV&&EV.haz&&hT<=0){hT=rr(90,160);const h=hzd.find(o=>!o.on);if(h){h.on=1;h.hit=0;h.fl=R()<.3?1:0;h.z=-280;const l=Math.floor(R()*4);h.x=h.fl?(LX[l]+LX[l^1])/2:LX[l];h.p.visible=!h.fl;h.f.visible=!!h.fl;h.g.position.set(h.x,0,h.z);h.g.visible=true}}
  hzd.forEach(h=>{if(!h.on)return;h.z+=ps*dt;h.g.position.z=h.z;if(h.z>20){h.on=0;h.g.visible=false;return}if(!play)return;
   if(h.fl){if(Math.abs(h.z)<3.5&&Math.abs(h.x-px)<3.3){ps=Math.max(0,ps-30*dt);if(!h.hit){h.hit=1;toast('Flood! Slow down!',1);snd(t=>nz(t,.5,800,'lowpass',.6))}}}
   else if(!h.hit&&Math.abs(h.z)<1.2&&Math.abs(h.x-px)<1.4){h.hit=1;ps*=.75;shake=.8;hp-=4;toast('Pothole! Ouch!',1);snd(t=>tn(t,100,40,.2,'sine',.8))}});
- if(play&&EV&&EV.mode&&EV.mode!='sprint'){let h;if(EV.mode=='time'){tlim-=dt;h=`<b style="font-size:24px">⏱ ${Math.max(0,tlim).toFixed(1)}s</b>`;if(tlim<=0)fin('TIME UP','Time don finish at '+Math.round(dist-D0)+' m')}
+ if(play&&EV&&['time','escape','cash'].includes(EV.mode)){let h;if(EV.mode=='time'){tlim-=dt;h=`<b style="font-size:24px">⏱ ${Math.max(0,tlim).toFixed(1)}s</b>`;if(tlim<=0)fin('TIME UP','Time don finish at '+Math.round(dist-D0)+' m')}
   else if(EV.mode=='cash'){h=`<b style="font-size:20px">💰 ${fm(cash)} / ${fm(EV.goal)}</b>`;if(dist>=FIN&&cash<EV.goal)fin('SHORT OF CASH','You collect '+fm(cash)+' but need '+fm(EV.goal))}
   else h=`<b style="font-size:20px">🚔 ESCAPE · ${Math.max(0,Math.round(FIN-dist))} m</b>`;if(h!==md.h){$('pos').innerHTML=h;md.h=h}}};
 </script><script>
@@ -490,6 +501,69 @@ B.swat=g=>{const m=MP(0x1b2230);wh(g,2.3,5.6,1.2);rbx(g,2.3,1.6,5.6,m,0,1.35,0,.
 {const sw=mk('swat');trf.push(sw);place(sw,1)}
 setQ();
 </script><script>
+/* ---- name, controls, free crossing, NFS-style events ---- */
+['sl','sr','bk','nt'].forEach(id=>{const o=$(id),n=o.cloneNode(true);o.replaceWith(n)});
+function hold3(id,f){const b=$(id);let a=0;const on=e=>{e.preventDefault();a=1;b.classList.add('dn');try{b.setPointerCapture(e.pointerId)}catch(_){}f(1)},off=()=>{if(!a)return;a=0;b.classList.remove('dn');f(0)};b.addEventListener('pointerdown',on);['pointerup','pointercancel','lostpointercapture','pointerleave'].forEach(n=>b.addEventListener(n,off));b.addEventListener('contextmenu',e=>e.preventDefault())}
+hold3('sl',v=>{if(v)tp.L=-1;else delete tp.L});hold3('sr',v=>{if(v)tp.R=1;else delete tp.R});hold3('bk',v=>brk=v);hold3('nt',v=>nitOn=v);
+Object.assign(MODE,{sprint:'🏁 STREET SPRINT',duel:'⚔ BOSS DUEL',ko:'💀 KNOCKOUT',time:'⏱ TIME TRIAL',escape:'🚔 POLICE PURSUIT',cash:'💰 BOUNTY RUN'});
+const EVMODES=['sprint','sprint','time','escape','ko','duel','cash','time','escape','ko','cash','time','sprint','duel'];EVS.forEach((e,i)=>e.mode=EVMODES[i]);
+EVS[5].n='Obalende Boss Duel';EVS[13].n='Lagos Grand Tour: Final Boss';EVS[4].n='Island Knockout';EVS[9].n='Lagos Grand Prix Knockout';
+let koN=0,ob=0;const e4=ext0,x4=ext;
+window.ext0=function(){e4();koN=0;ob=0;if(EV&&EV.mode=='duel'){rv.forEach((r,i)=>{if(i)r.rd=-1e6});rv[0].sk+=.06;rv[0].nm='BOSS '+rv[0].nm;tag(rv[0])}};
+window.ext=function(dt,play){x4(dt,play);if(!play)return;
+ if(RMAX>5){if(px<-6.2&&px>-8.4){ps=Math.max(0,ps-16*dt);shake=Math.max(shake,.3)}if(px<-8.6&&ps>25){ob+=dt*45;if(ob>=25){ob-=25;cash+=25;toast('Oncoming bonus +₦25',.6)}}}
+ if(EV&&EV.mode=='ko'&&koN<2&&dist>=D0+(FIN-D0)*(koN+1)/3){const all=rv.filter(r=>r.rd>-1e5).map(r=>({r,d:r.rd})).concat([{r:null,d:dist}]).sort((a,b)=>a.d-b.d),l=all[0];koN++;if(!l.r)fin('ELIMINATED','You were last at the checkpoint');else{l.r.rd=-1e6;toast('ELIMINATED: '+l.r.nm,1.8)}}};
+/* ---- detailed vehicles based on the photos ---- */
+const BK=M(0x111111),RHG=new T.CylinderGeometry(.16,.16,.08,14).rotateX(Math.PI/2),lamp=(g,x,y,z,c=0xfff2c0)=>{const o=new T.Mesh(RHG,MB(c));o.position.set(x,y,z);g.add(o)},wheel=(g,x,y,z,sx,sr)=>{const o=new T.Mesh(WG,WM2);o.scale.set(sx,sr,sr);o.position.set(x,y,z);g.add(o)};
+B.danfo=g=>{wh(g,2,4.6,1.05);rbx(g,2,1.2,4.6,YP,0,.95,0,.14);rbx(g,1.96,1,4.4,YP,0,2.05,0,.22);bx(g,2.03,.2,4.62,BK,0,1.25,0);bx(g,2.02,.14,4.6,BK,0,.52,0);bx(g,1.98,.5,4,GL,0,2.15,.1);bx(g,1.8,.62,.06,GL,0,2.1,-2.22);
+ const m=pk(DM);[-1,1].forEach(s=>{[-1.55,-.55,.45,1.45].forEach(z=>bx(g,.04,.55,.07,BK,s*1,2.15,z));bx(g,.03,.9,.04,BK,s*1.01,1.15,-.7);bx(g,.1,.04,.04,CH,s*1.02,1.3,-.5);bx(g,.12,.2,.3,BK,s*1.12,1.95,-1.7);bx(g,.18,.1,.05,MB(0xff9a20),s*.95,.75,-2.31);const o=new T.Mesh(DG,m);o.position.set(s*1.02,.82,0);o.scale.y=.8;o.rotation.y=s*Math.PI/2;g.add(o)});
+ rbx(g,2.1,.22,.25,CHM,0,.5,-2.35,.08);bx(g,1.1,.45,.05,DK,0,.98,-2.31);[0,1,2].forEach(i=>bx(g,1.1,.03,.06,CH,0,.85+i*.12,-2.33));lamp(g,-.72,.98,-2.33);lamp(g,.72,.98,-2.33);
+ rbx(g,2.1,.2,.2,CHM,0,.5,2.32,.08);bx(g,.5,.16,.03,WHT,0,.65,2.34);tl(g,2,4.6,1);bx(g,1.7,.04,2.5,CH,0,2.62,.3);bx(g,.04,.12,2.5,CH,-.85,2.68,.3);bx(g,.04,.12,2.5,CH,.85,2.68,.3);if(R()<.7)rbx(g,1.1,.5,1.5,M(0x8a6a3a),0,2.92,.3,.1)};
+const CHM=MB(0xc8ccd4);
+B.keke=g=>{rbx(g,1.45,.8,2.6,YP,0,.75,0,.18);rbx(g,1.3,.12,2.1,MP(0x151515),0,1.95,.3,.05);[-1,1].forEach(s=>[-.6,1.1].forEach(z=>bx(g,.07,1.1,.07,BK,s*.65,1.4,z)));bx(g,1.2,.55,.06,GL,0,1.6,-.8);rbx(g,1.2,.3,.9,M(0x2a2a2a),0,1.1,.5,.08);lamp(g,0,.95,-1.33);wheel(g,0,.3,-1,.2,.85);wheel(g,.7,.3,.9,.2,.85);wheel(g,-.7,.3,.9,.2,.85);bx(g,.5,.14,.03,WHT,0,.55,1.31)};
+B.okada=g=>{const r=M(0x8a1f1f),k=M(0x15171a);wheel(g,0,.34,-.72,.14,.95);wheel(g,0,.34,.72,.14,.95);rbx(g,.34,.3,.8,r,0,.85,-.1,.1);rbx(g,.3,.12,.7,k,0,.78,.55,.05);bx(g,.08,.5,.08,CH,0,.55,-.55);bx(g,.7,.05,.05,k,0,1.12,-.55);bx(g,.06,.4,.9,k,0,.55,.15);bx(g,.22,.22,.2,k,0,.45,.05);lamp(g,0,1,-.7);
+ const h=human(g,{y:0,z:.35,s:.95});h.userData.legs.forEach(l=>l.rotation.x=-1.2);h.userData.arms.forEach(a=>a.rotation.x=-1.1);g.userData.rh=h};
+const ob0=B.brt;B.brt=g=>{ob0(g);[-1,1].forEach(s=>{for(let i=-4;i<=4;i++)bx(g,.05,.9,.06,BK,s*1.27,2.5,i*1.1);[-2.2,2.2].forEach(z=>bx(g,.02,1.7,1,M(0x222a33),s*1.26,1.6,z))});bx(g,1.6,.18,.05,MB(0xffa000),0,3.1,-5.52);lamp(g,-.9,1,-5.52);lamp(g,.9,1,-5.52);[-2.5,2.5].forEach(z=>bx(g,1.2,.3,1.6,M(0xcfd2d8),0,3.35,z))};
+const ov0=B.vio;B.vio=g=>{ov0(g);rbx(g,1.9,1.05,2.8,stripeM,0,1.85,1.2,.2);lamp(g,-.7,.95,-2.52);lamp(g,.7,.95,-2.52)};
+const rbv=v=>{v.g.clear();B[v.t](v.g);glow(v.g,VT[v.t],v.opp);shd(v.g,VT[v.t]);v.rg=null;v.sm=null;v.rh=v.g.userData.rh||null};
+trf.concat(opp).filter(v=>['danfo','keke','okada','vio','brt'].includes(v.t)).forEach(rbv);
+setQ();
+</script><script>
+/* ---- PHASE 1: driving feel ---- */
+let drf=0,drh=0,combo=0,cpts=0,cT0=0,chain=0,chT=0,dd=0,ldEnd=-9,slow=1,slowT=0,recT=0,acBase=1,pk0=0,hpPrev=100,dk=0,nk=0,dsx=1,pn2=0,fxl=performance.now(),fxs=0,smkT=0,cmbS='';
+hold3('dr',v=>drh=v);
+function pop(a,b){const e=$('pop');e.innerHTML=a+(b?'<small>'+b+'</small>':'');e.classList.remove('on');void e.offsetWidth;e.classList.add('on')}
+const mult=()=>Math.min(8,Math.max(1,combo));
+function addAct(name,pts){combo++;cT0=4;const m=mult(),g=Math.round(pts*m);cash+=g;cpts+=g;pop(name+(m>1?' x'+m:''),'+'+fm(g))}
+function nearMiss(v,g){chain=chT>0?chain+1:1;chT=3;if(R()<.5)sfx('horn');nit=Math.min(100,nit+5);tlim+=1.5;addAct(chain>=5?'TRAFFIC MASTER':chain>1?'NEAR MISS x'+chain:'NEAR MISS',Math.round(g*.6))}
+function drEnd(){if(dd>=18){addAct(dd>=300?'PERFECT DRIFT':dd>=150?'LONG DRIFT':'DRIFT',Math.round(dd*1.2));ldEnd=performance.now()/1000}dd=0}
+const smk2=[],skd=[],SKDG=new T.PlaneGeometry(.28,1.1),SKDM=new T.MeshBasicMaterial({color:0x0a0a0a,transparent:true,opacity:.45,depthWrite:false});
+for(let i=0;i<20;i++){const s=new T.Sprite(new T.SpriteMaterial({map:GT,color:0xdddddd,transparent:true,opacity:0,depthWrite:false}));s.visible=false;s.userData={};sc.add(s);smk2.push(s)}
+for(let i=0;i<36;i++){const m=new T.Mesh(SKDG,SKDM);m.rotation.x=-Math.PI/2;m.visible=false;sc.add(m);skd.push(m)}
+const e5=ext0,x5=ext;
+window.ext0=function(){e5();combo=cpts=chain=dd=0;recT=0;acBase=AC;slow=1;slowT=0;hpPrev=100;pk0=0;rv.forEach(r=>r.ah=undefined);smk2.forEach(s=>s.visible=false);skd.forEach(m=>m.visible=false)};
+window.ext=function(dt,play){x5(dt,play);
+ smk2.forEach(s=>{if(!s.visible)return;const u=s.userData;u.l-=dt;s.position.z+=ps*dt;s.position.y+=dt*.9;s.scale.setScalar(s.scale.x+dt*2.2);s.material.opacity=Math.max(0,u.l*.7);if(u.l<=0)s.visible=false});
+ skd.forEach(m=>{if(!m.visible)return;m.position.z+=ps*dt;if(m.position.z>16)m.visible=false});
+ if(!play)return;
+ const real=dt/Math.max(.2,slow);if(chT>0)chT-=real;if(cT0>0){cT0-=real;if(cT0<=0&&combo>0){if(combo>=3)pop('COMBO x'+mult(),'+'+fm(cpts));combo=0;cpts=0}}
+ if(shake>.95&&pk0<=.95){if(combo>=3)pop('COMBO LOST');combo=cpts=chain=dd=0;recT=2;if(hpPrev-hp>=15){slowT=.55;slow=.3}}pk0=shake;hpPrev=hp;
+ AC=acBase*(recT>0?1.8:1);if(recT>0)recT-=real;
+ if(drf){dd+=ps*dt;nit=Math.min(100,nit+10*dt);dsx=vx>=0?1:-1;smkT-=dt;if(smkT<=0){smkT=.045;[-.8,.8].forEach(sx=>{const s=smk2.find(o=>!o.visible);if(s){s.visible=true;s.position.set(px+sx,.4,1.9);s.scale.setScalar(.6);s.userData.l=.9}const m=skd.find(o=>!o.visible);if(m){m.visible=true;m.position.set(px+sx,.04,1.9)}});if(R()<.5)snd(t=>nz(t,.12,2200,'bandpass',.1))}}else if(dd>0)drEnd();
+ rv.forEach(r=>{if(r.rd<-1e5)return;const a=r.rd>dist;if(r.ah===true&&!a)addAct('OVERTAKE',200);r.ah=a})};
+/* per-frame effects: camera, speed lines, nitro timing, engine gears, combo HUD */
+const r3=rd.render;rd.render=(a,b)=>{const n=performance.now(),dt=Math.min(.05,(n-fxl)/1000);fxl=n;
+ if(st=='play'){const nu=(nitOn||K.Space)&&nit>0;nk+=((nu?1:0)-nk)*Math.min(1,dt*5);dk+=((drf?1:0)-dk)*Math.min(1,dt*6);
+  if(nu&&!pn2&&performance.now()/1000-ldEnd<.8){addAct('PERFECT NITRO',300);ps+=6}pn2=nu;
+  if(slowT>0){slowT-=dt;slow=.3+.7*Math.max(0,1-slowT/.55)}else slow=1;
+  cam.position.z+=nk*1.8;cam.position.x+=dsx*dk*1.3;cam.fov+=nk*7+dk*3;cam.updateProjectionMatrix();cam.rotateZ(-dsx*dk*.05);
+  pl.rotation.y+=-dsx*dk*.4;pl.rotation.z+=-dsx*dk*.08;if(fl1.visible){const k=.6+R()*.6;fl1.scale.z=fl2.scale.z=.7*k}
+  if(osc)osc.frequency.value=50+((ps%16)/16)*70+Math.min(5,(ps/16)|0)*14;
+  fxs++;const e=$('sl2');if(fxs%2==0){e.style.opacity=Math.min(.6,Math.max(0,(ps-42)/45)*.45+nk*.25);e.style.transform='rotate('+(R()*7).toFixed(1)+'deg)'}
+  const cs=drf&&dd>3?'DRIFT '+Math.round(dd)+'m':combo>0?'COMBO x'+mult()+' · +'+fm(cpts):'';if(cs!==cmbS){$('cmb').textContent=cs;cmbS=cs}}
+ else{slow=1;nk=dk=0;if(cmbS){$('cmb').textContent='';cmbS=''}$('sl2').style.opacity=0}
+ r3(a,b)};
+</script><script>
 /* ---- Netlify: accounts, cloud save, shared leaderboard ---- */
 const AK='lagosrun-acct';let ACC=null;try{ACC=JSON.parse(localStorage.getItem(AK))}catch(e){}
 async function api(p,m='GET',b){const r=await fetch('/api/'+p,{method:m,headers:Object.assign({'content-type':'application/json'},ACC?{authorization:'Bearer '+ACC.tok}:{}),body:b?JSON.stringify(b):undefined});let d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||('Error '+r.status));return d}
@@ -500,7 +574,7 @@ window.pub=async()=>{if(cloudOn())push()};
 function cloudEnter(p){SK='lagosrun-cloud';S=Object.assign(DEF(),p);applyCar(S.car);home()}
 const gsignin=signin;
 window.signin=async function(){st='menu';if(ACC){show('<h2>Loading...</h2>');try{const d=await api('profile');cloudEnter(d.profile);return}catch(e){ACC=null;localStorage.removeItem(AK)}}
- show(`<h1>LAGOS<br>RUN</h1><div class=tag>Log in to save online and join the leaderboard</div><button class=go onclick="A('log')">LOGIN</button><button class=go onclick="A('reg')">CREATE ACCOUNT</button><button class=go onclick="A('gst')">PLAY AS GUEST</button>`)};
+ show(`<h1>EKO<br>NITRO</h1><div class=tag>Log in to save online and join the leaderboard</div><button class=go onclick="A('log')">LOGIN</button><button class=go onclick="A('reg')">CREATE ACCOUNT</button><button class=go onclick="A('gst')">PLAY AS GUEST</button>`)};
 function acctForm(mode,err=''){const r=mode=='reg';show(`<h2>${r?'CREATE ACCOUNT':'LOGIN'}</h2><div class=tag>${r?'Username 3-16 letters, numbers or _ (shown on the leaderboard, avoid your real name). Password 6+ characters. No password reset.':'Welcome back, racer'}</div><div class=pf><input id=au1 maxlength=16 placeholder="Username" autocapitalize=off autocomplete=username></div><div class=pf><input id=au2 type=password maxlength=64 placeholder="Password" autocomplete=${r?'new-password':'current-password'}></div><p>${err}</p><button class=go onclick="A('${r?'doreg':'dolog'}')">${r?'CREATE':'LOGIN'}</button><button class=go onclick="A('so')">BACK</button>`)}
 async function acct(mode){const u=$('au1').value.trim(),p=$('au2').value,guest=SK.startsWith('lagosrun-p-')?S:undefined;try{const d=await api(mode=='reg'?'register':'login','POST',{username:u,password:p,profile:mode=='reg'?guest:undefined});ACC={tok:d.token,user:d.user};localStorage.setItem(AK,JSON.stringify(ACC));cloudEnter(d.profile)}catch(e){acctForm(mode,esc(e.message))}}
 const A3=window.A;window.A=(a,x)=>{if(a=='log')acctForm('log');else if(a=='reg')acctForm('reg');else if(a=='dolog')acct('log');else if(a=='doreg')acct('reg');else if(a=='gst')gsignin();else if(a=='so'&&ACC){ACC=null;localStorage.removeItem(AK);signin()}else A3(a,x)};
