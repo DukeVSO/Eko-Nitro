@@ -11,7 +11,7 @@ const n = (x) => Math.max(0, Math.floor(+x) || 0);
 // Sanitise a profile sent by the browser and cap how fast it can grow.
 function clean(p, prev) {
   p = p || {};
-  const o = { name: String(p.name || "").replace(/[<>&"]/g, "").slice(0, 16), cash: n(p.cash), xp: n(p.xp), car: CARS.includes(p.car) ? p.car : "golf", own: [...new Set((Array.isArray(p.own) ? p.own : []).filter((c) => CARS.includes(c)))], up: {}, paint: {}, done: {}, rec: n(p.rec), jx: Math.min(60, n(p.jx)), mute: !!p.mute, q: p.q ? 1 : 0 };
+  const o = { name: String(p.name || "").replace(/[<>&"]/g, "").slice(0, 16), cash: n(p.cash), xp: n(p.xp), car: CARS.includes(p.car) ? p.car : "golf", own: [...new Set((Array.isArray(p.own) ? p.own : []).filter((c) => CARS.includes(c)))], up: {}, paint: {}, done: {}, rec: n(p.rec), jx: Math.min(60, n(p.jx)), mute: !!p.mute, q: p.q ? 1 : 0, ctl: p.ctl === "tilt" ? "tilt" : "buttons", radioOff: !!p.radioOff, tinv: !!p.tinv };
   if (!o.own.includes("golf")) o.own.push("golf");
   if (!o.own.includes(o.car)) o.car = "golf";
   for (const c of o.own) {
@@ -20,10 +20,16 @@ function clean(p, prev) {
     if (p.paint && Number.isInteger(p.paint[c])) o.paint[c] = p.paint[c] & 0xffffff;
   }
   for (const [k, d] of Object.entries(p.done || {})) { const id = n(k); if (id >= 1 && id <= 14 && d) o.done[id] = { s: Math.min(3, Math.max(1, n(d.s))), t: Math.min(9e5, +d.t || 9e5) }; }
+  o.cz = {};
+  for (const c of o.own) {
+    const z = (p.cz || {})[c]; if (!z) continue;
+    const pl = String(z.plate || "").toUpperCase();
+    o.cz[c] = { rim: Math.min(7, n(z.rim)), sp: Math.min(1, n(z.sp)), tint: Math.min(2, n(z.tint)), neon: Math.min(6, n(z.neon)), str: Math.min(6, n(z.str)), plate: /^[A-Z0-9-]{3,10}$/.test(pl) ? pl : "LAG-247-AB", pd: Object.fromEntries(["rim", "sp", "tint", "neon", "str", "plate"].filter((q) => z.pd && z.pd[q]).map((q) => [q, 1])) };
+  }
   if (prev) { o.xp = Math.min(o.xp, prev.xp + 1500); o.cash = Math.min(o.cash, prev.cash + 130000); }
   return o;
 }
-const DEFAULT = (name) => ({ name, cash: 3000, xp: 0, car: "golf", own: ["golf"], up: {}, paint: {}, done: {}, rec: 0, jx: 0, mute: false, q: 0 });
+const DEFAULT = (name) => ({ name, cash: 3000, xp: 0, car: "golf", own: ["golf"], up: {}, paint: {}, done: {}, rec: 0, jx: 0, mute: false, q: 0, ctl: "buttons", radioOff: false, tinv: false });
 
 async function updateBoard(lbs, user, p) {
   const top = (await lbs.get("top", { type: "json" })) || [];
