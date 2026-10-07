@@ -176,7 +176,7 @@ function upd(dt,play){
   if(play){crash(v);if(v.pz<0&&v.z>=0&&v.cd<=0&&Math.abs(v.x-px)<v.w/2+2.6&&ps>v.v){const g=Math.round(150+ps*3);nearMiss(v,g)}}});
  opp.forEach(v=>{v.z+=(ps+v.v)*dt;if(v.z>30){v.z=-(260+R()*100);v.x=-14.8+pk(LX)}v.g.position.set(v.x,0,v.z)});
  if(play){if(dist>D0+PC0&&!po.g.visible){po.g.visible=true;po.z=70;po.x=px;toast("Police dey your back o!",2)}
-  if(po.g.visible){po.pz=po.z;po.z+=(ps-po.v)*dt;po.x+=(px-po.x)*cl(dt*2.2,0,1);po.cd-=dt;if(po.z>260)po.z=110;po.g.position.set(po.x,0,po.z);crash(po);
+  if(po.g.visible){po.pz=po.z;po.z+=(ps-po.v)*dt;po.x+=(px-po.x)*cl(dt*2.2,0,1);po.cd-=dt;if(po.z>480)po.z=110;po.g.position.set(po.x,0,po.z);crash(po);
    po_t=(po.z<13&&Math.abs(po.x-px)<3.6)?po_t+dt:Math.max(0,po_t-dt*1.5);hot=po.z<90;if(po_t>2.4)fin('BUSTED!',`Police catch you at ${Math.round(dist)} m · ₦${cash}`)}
   sirT-=dt;if(sirT<0){sirT=.14;const f=sirA.color.getHex()==0xff2a2a;sirA.color.setHex(f?0x2a6bff:0xff2a2a);sirB.color.setHex(f?0xff2a2a:0x2a6bff)}
   while(stopI<STOPS.length&&dist>=STOPS[stopI][1]){toast(STOPS[stopI][0]+"! "+STOPS[stopI][2],2.4);stopI++}
@@ -270,7 +270,7 @@ window.rb=function(g,d){rb0(g,d);const u=g.userData;if(!u.tk){u.tk=new T.Mesh(TK
 window.ext0=function(){e0();const nt=EV&&EV.night,rn=EV&&EV.rain;GM.opacity=nt?.95:.3;GH.opacity=nt?1:.3;LG.opacity=nt?1:.15;hb.material.opacity=nt?.6:0;HL.intensity=nt?.5:1;sun.intensity=nt?.3:.8;SKM.color.setHex(nt?0x1a1838:0x6a5782);
  roadM.specular.setHex(rn?0x99a0b0:0x222222);roadM.shininess=rn?70:8;sc.fog.far=rn?200:310;if(rn&&!nt)sc.fog.color.setHex(0x8a8f9c);$('sunx').style.background=nt?'radial-gradient(circle,#f4f6ff 0,#aab4e8 18%,#6a74c033 42%,transparent 62%)':rn?'none':''};
 window.ext=function(dt,play){x0(dt,play);sun.position.set(px-16,32,12);sun.target.position.set(px,0,0);rain.visible=!!(EV&&EV.rain&&play);rainU(dt)};
-function setQ(){const lo=S.q;rd.setPixelRatio(lo?1.1:Math.min(devicePixelRatio||1,2));rs();rd.shadowMap.enabled=!lo;trf.concat(opp,rv,[po]).forEach(v=>v.g.traverse(o=>{if(o.isMesh&&o.geometry!==PS)o.castShadow=!lo}));sc.traverse(o=>{if(o.material)[].concat(o.material).forEach(m=>m.needsUpdate=true)})}
+function setQ(){const lo=S.q;rd.setPixelRatio(lo?1.1:Math.min(devicePixelRatio||1,2));rs();rd.shadowMap.enabled=!lo;trf.concat(opp,rv,[po],typeof pp!='undefined'?pp:[]).forEach(v=>v.g.traverse(o=>{if(o.isMesh&&o.geometry!==PS)o.castShadow=!lo}));sc.traverse(o=>{if(o.material)[].concat(o.material).forEach(m=>m.needsUpdate=true)})}
 blds.forEach(g=>rb(g,dist-g.position.z));applyCar(S.car);setQ();
 </script><script>
 /* ---- nitro, pickups, danfo attacks ---- */
@@ -563,6 +563,50 @@ const r3=rd.render;rd.render=(a,b)=>{const n=performance.now(),dt=Math.min(.05,(
   const cs=drf&&dd>3?'DRIFT '+Math.round(dd)+'m':combo>0?'COMBO x'+mult()+' · +'+fm(cpts):'';if(cs!==cmbS){$('cmb').textContent=cs;cmbS=cs}}
  else{slow=1;nk=dk=0;if(cmbS){$('cmb').textContent='';cmbS=''}$('sl2').style.opacity=0}
  r3(a,b)};
+</script><script>
+/* ---- PHASE 2: traffic personalities, heat, Lagos moments ---- */
+let hv=0,lostT=0,pcDone=0,mT=22,rainT=0,rbT=0,pk3=0,htL=-1,HM0=1,lvPrev=0;
+for(let i=0;i<3;i++){const o=mk('okada');rbv(o);trf.push(o);place(o,1)}
+const pp=[0,1,2].map(()=>{const v=mk('police');v.g.visible=false;v.z=999;v.x=0;return v});
+const pc2=place;window.place=function(v,far){pc2(v,far);v.v0=v.v;v.tm=rr(1,4);v.ramp=0;v.stp=0};trf.forEach(v=>{v.v0=v.v});
+const CNG=new T.ConeGeometry(.28,.8,8),rwk={z:0,on:0,ln:[0,1],o:[0,1,2,3].map(()=>{const g=new T.Group();bx(g,3.1,.9,.25,M(0xe8e8e8),0,.5,0);bx(g,3.1,.25,.27,M(0xe0791e),0,.65,0);bx(g,3.1,.25,.27,M(0xe0791e),0,.2,0);for(let k=-1;k<=1;k++){const c=new T.Mesh(CNG,M(0xe0791e));c.position.set(k*1.1,.4,.9);g.add(c)}g.visible=false;sc.add(g);return{g,x:0,z:0,w:3.2,l:1.2,cd:0,t:'works'}})};
+const hideRw=()=>{rwk.on=0;rwk.o.forEach(o=>o.g.visible=false)};
+function mBlock(){const g=Math.floor(R()*4),ds=trf.filter(v=>v.t=='danfo'&&!v.hit&&!v.fall).slice(0,3);let k=0;for(let l=0;l<4&&k<ds.length;l++){if(l==g)continue;const v=ds[k++];v.ln=l;v.x=LX[l];v.z=v.pz=-230-k*2;v.v=v.v0=9;v.tm=99;v.stp=0}toast('D.A.N.F.O BLOCK! Find the gap',2.2)}
+function mSwarm(){trf.filter(v=>v.t=='okada'&&!v.fall&&!v.hit).forEach((v,i)=>{v.ln=Math.floor(R()*4);v.x=LX[v.ln];v.z=v.pz=-190-i*12;v.v=v.v0=ps*.75;v.tm=.4});toast('OKADA SWARM!',2)}
+function mRain(){rainT=28;toast('RAINFALL! Roads getting slippery',2.2)}
+function mWorks(){const a=Math.floor(R()*3);rwk.ln=[a,a+1];rwk.z=-230;rwk.on=1;rwk.o.forEach((o,i)=>{o.g.visible=rwk.ln.includes(i);o.x=LX[i];o.cd=0;o.g.position.x=o.x});toast('ROAD WORKS! Lane blocked',2.2)}
+function mRelease(){trf.filter(v=>!['brt','okada'].includes(v.t)&&!v.hit&&!v.fall).sort(()=>R()-.5).slice(0,6).forEach((v,i)=>{v.ln=i%4;v.x=LX[v.ln];v.z=v.pz=-150-i*14;v.v=0;v.ramp=4});toast('TRAFFIC RELEASE! Heavy traffic ahead',2.2)}
+function mContainer(){trf.filter(v=>['truck','brt','swat'].includes(v.t)&&!v.hit).forEach((v,i)=>{v.ln=i%4;v.x=LX[v.ln];v.z=v.pz=-220-i*18;v.v=v.v0=12;v.tm=99});toast('CONTAINER ZONE! Heavy trucks ahead',2.2)}
+function mStreet(){if(bridge(dist+210))return;cw.z=cw.pz=-210;cw.g.visible=true;cw.p.forEach(p=>{p.cd=0});toast('STREET EVENT! Crowd on the road',2.2)}
+function mCheck(){if(!cp.on){cpN=dist;EV.cp=1}}
+const MOM=[mBlock,mSwarm,mRain,mWorks,mRelease,mContainer,mStreet,mCheck];
+const e6=ext0,x6=ext;
+window.ext0=function(){e6();const es=EV&&EV.mode=='escape';hv=es?1.6:0;pcDone=es?1:0;lostT=0;mT=22;rainT=0;rbT=0;lvPrev=0;htL=-1;PC0=1e9;HM0=HM;pp.forEach(u=>{u.g.visible=false;u.z=999});hideRw();trf.forEach(v=>{v.v0=v.v;v.stp=0;v.ramp=0})};
+window.ext=function(dt,play){x6(dt,play);const real=dt/Math.max(.2,slow),t=performance.now()/1000;
+ if(rwk.on){rwk.z+=ps*dt;rwk.o.forEach(o=>{o.z=rwk.z;o.g.position.z=rwk.z;if(play&&o.g.visible)crash(o)});if(rwk.z>40)hideRw()}
+ trf.forEach(v=>{if(v.t=='keke'&&v.tm>2)v.tm=rr(.7,1.8);
+  if(v.ramp>0){v.ramp-=dt;v.v=v.v0*(1-Math.max(0,v.ramp)/4)}
+  if(v.t=='danfo'&&!v.fall&&!v.hit){if(v.stp>0){v.stp-=dt;v.v=v.v0*.12;if(v.stp<=0)v.v=v.v0}else if(play&&!v.ang&&v.z<-35&&v.z>-200&&R()<dt*.03)v.stp=rr(1.2,2.2);
+   if(!v.hz){v.hz=new T.Sprite(SPM(0xff9a20,0));v.hz.scale.set(3.4,1.2,1);v.hz.position.set(0,1,2.4);v.g.add(v.hz)}v.hz.material.opacity=v.stp>0&&Math.sin(t*14)>0?.9:0}});
+ if(!play)return;
+ if(shake>.95&&pk3<=.95&&hv>0)hv=Math.min(5,hv+.3);pk3=shake;
+ if(RMAX>5&&px<-8.6&&ps>30)hv=Math.min(5,hv+.05*dt);
+ if(EV&&EV.pc<9999&&!pcDone&&dist>D0+EV.pc){pcDone=1;hv=Math.max(hv,1.2);toast('Police spotted you!',1.8)}
+ const lv=hv>.05?Math.min(5,Math.ceil(hv)):0;
+ if(lv>=1&&!po.g.visible){po.g.visible=true;po.z=75;po.x=px;toast('POLICE PURSUIT!',1.8)}
+ if(lv==0&&po.g.visible&&po.z>140)po.g.visible=false;
+ po.v=52+lv*1.6;
+ pp.forEach((u,i)=>{const need=[2,3,5][i];if(lv>=need){if(!u.g.visible){u.g.visible=true;u.z=95+i*25;u.x=px+(i%2?3:-3);u.cd=0}u.v=po.v-1.2;u.z+=(ps-u.v)*dt;u.x+=(px+(i%2?2.8:-2.8)-u.x)*Math.min(1,dt*1.8);u.cd-=dt;if(u.z>480)u.z=110;u.g.position.set(u.x,0,u.z);crash(u);if(u.z<13&&Math.abs(u.x-px)<3.6)po_t+=dt*.5}else if(u.g.visible){u.z+=(ps-52)*dt;u.g.position.set(u.x,0,u.z);if(u.z>140)u.g.visible=false}});
+ hot=lv>0&&(po.z<110||pp.some(u=>u.g.visible&&u.z<110));
+ const near=(po.g.visible&&po.z<150)||pp.some(u=>u.g.visible&&u.z<150);
+ if(lv>0){if(!near){lostT+=real;if(lostT>4)hv-=.22*real*(lostT>8?1.5:1)}else{lostT=0;hv-=.015*real}}else lostT=0;
+ if(hv<=0){hv=0;if(lvPrev>0){cash+=500;pop('ESCAPED!','Police lost you · +₦500')}}lvPrev=lv;
+ if(lv>=4&&!cp.on&&RMAX>5&&rbT<=0){EV.cp=1;cpN=dist;rbT=24;cp.rb=1}if(rbT>0)rbT-=real;
+ if(cp.on&&cp.rb&&cp.z<-200){cp.rb=0;cp.k=1;cp.sl.forEach((s,i)=>{s.a.g.visible=false;s.b.g.visible=i!=cp.o});toast('ROADBLOCK AHEAD!',2.2)}
+ const h=$('ht');if(lv!==htL){h.textContent='★'.repeat(lv)+'☆'.repeat(5-lv)+' HEAT';htL=lv}h.style.display=lv>0?'block':'none';
+ if(rainT>0){rainT-=real;rain.visible=true;sc.fog.far=190;roadM.specular.setHex(0x99a0b0);roadM.shininess=70;HM=HM0*.88;if(rainT<=0){HM=HM0;sc.fog.far=EV&&EV.rain?200:310;roadM.specular.setHex(EV&&EV.rain?0x99a0b0:0x222222);roadM.shininess=EV&&EV.rain?70:8}}
+ if(dist-D0>200){mT-=real;if(mT<=0){mT=rr(26,42);pk(RMAX>5?MOM:[mSwarm,mRain,mRelease])()}}};
+setQ();
 </script><script>
 /* ---- Netlify: accounts, cloud save, shared leaderboard ---- */
 const AK='lagosrun-acct';let ACC=null;try{ACC=JSON.parse(localStorage.getItem(AK))}catch(e){}
