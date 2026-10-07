@@ -19,12 +19,12 @@ function clean(p, prev) {
     o.up[c] = { e: Math.min(3, n(u.e)), t: Math.min(3, n(u.t)), n: Math.min(3, n(u.n)) };
     if (p.paint && Number.isInteger(p.paint[c])) o.paint[c] = p.paint[c] & 0xffffff;
   }
-  for (const [k, d] of Object.entries(p.done || {})) { const id = n(k); if (id >= 1 && id <= 14 && d) o.done[id] = { s: Math.min(3, Math.max(1, n(d.s))), t: Math.min(9e5, +d.t || 9e5) }; }
+  for (const [k, d] of Object.entries(p.done || {})) { const id = n(k); if (id >= 1 && id <= 17 && d) o.done[id] = { s: Math.min(3, Math.max(1, n(d.s))), t: Math.min(9e5, +d.t || 9e5) }; }
   o.cz = {};
   for (const c of o.own) {
     const z = (p.cz || {})[c]; if (!z) continue;
     const pl = String(z.plate || "").toUpperCase();
-    o.cz[c] = { rim: Math.min(7, n(z.rim)), sp: Math.min(1, n(z.sp)), tint: Math.min(2, n(z.tint)), neon: Math.min(6, n(z.neon)), str: Math.min(6, n(z.str)), plate: /^[A-Z0-9-]{3,10}$/.test(pl) ? pl : "LAG-247-AB", pd: Object.fromEntries(["rim", "sp", "tint", "neon", "str", "plate"].filter((q) => z.pd && z.pd[q]).map((q) => [q, 1])) };
+    o.cz[c] = { rim: Math.min(7, n(z.rim)), sp: Math.min(1, n(z.sp)), tint: Math.min(2, n(z.tint)), neon: Math.min(6, n(z.neon)), str: Math.min(6, n(z.str)), ex: Math.min(3, n(z.ex)), plate: /^[A-Z0-9-]{3,10}$/.test(pl) ? pl : "LAG-247-AB", pd: Object.fromEntries(["rim", "sp", "tint", "neon", "str", "ex", "plate"].filter((q) => z.pd && z.pd[q]).map((q) => [q, 1])) };
   }
   if (prev) { o.xp = Math.min(o.xp, prev.xp + 1500); o.cash = Math.min(o.cash, prev.cash + 130000); }
   return o;
