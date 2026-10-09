@@ -11,7 +11,7 @@ const n = (x) => Math.max(0, Math.floor(+x) || 0);
 // Sanitise a profile sent by the browser and cap how fast it can grow.
 function clean(p, prev) {
   p = p || {};
-  const o = { name: String(p.name || "").replace(/[<>&"]/g, "").slice(0, 16), cash: n(p.cash), xp: n(p.xp), car: CARS.includes(p.car) ? p.car : "golf", own: [...new Set((Array.isArray(p.own) ? p.own : []).filter((c) => CARS.includes(c)))], up: {}, paint: {}, done: {}, rec: n(p.rec), jx: Math.min(60, n(p.jx)), mute: !!p.mute, q: p.q ? 1 : 0, ctl: ["tilt", "stick"].includes(p.ctl) ? p.ctl : "buttons", radioOff: !!p.radioOff, tinv: !!p.tinv };
+  const o = { name: String(p.name || "").replace(/[<>&"]/g, "").slice(0, 16), cash: n(p.cash), xp: n(p.xp), car: CARS.includes(p.car) ? p.car : "golf", own: [...new Set((Array.isArray(p.own) ? p.own : []).filter((c) => CARS.includes(c)))], up: {}, paint: {}, done: {}, rec: n(p.rec), jx: Math.min(60, n(p.jx)), mute: !!p.mute, q: p.q ? 1 : 0, qual: ["auto", "low", "medium", "high", "ultra"].includes(p.qual) ? p.qual : "auto", ctl: ["tilt", "stick"].includes(p.ctl) ? p.ctl : "buttons", radioOff: !!p.radioOff, tinv: !!p.tinv };
   if (!o.own.includes("golf")) o.own.push("golf");
   if (!o.own.includes(o.car)) o.car = "golf";
   for (const c of o.own) {

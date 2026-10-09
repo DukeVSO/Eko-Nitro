@@ -1,0 +1,11 @@
+{
+  "name": "lasgidi-rush-tests",
+  "private": true,
+  "scripts": {
+    "test": "node smoke.js ../public/index.html"
+  },
+  "dependencies": {
+    "jsdom": "^24.0.0",
+    "three": "0.128.0"
+  }
+}
